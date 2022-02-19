@@ -24,7 +24,7 @@ time.sleep(2)
 username.send_keys(login_email)
 password.send_keys(login_password)
 driver.find_element(By.CLASS_NAME, "submit").click()
-time.sleep(6)
+time.sleep(6) # I increased the time here and the following one to allow a green login succuss bar covering the Arabica Coffee button. The button lasts for 10 secs. 
 
 
 # navigate to coffees page, then to arabicas page containing links to all quality reports 
@@ -40,8 +40,8 @@ coffeenum = 0
 while True:
 	print('page {}'.format(page))
 
-	# 39 rows in these tables * 8 columns per row = 312 cells. Every 8th cell clicks through to that coffee's data page starting with the 2nd cell.
-	for i in range(1,312,8):
+	# 50 rows in these tables * 8 columns per row = 400 cells. Every 8th cell clicks through to that coffee's data page starting with the 2nd cell.
+	for i in range(1,400,8):
 		time.sleep(4)
 
 		# paginate back to the desired page number
@@ -54,7 +54,7 @@ while True:
 			page_buttons = driver.find_elements(By.CLASS_NAME, 'paginate_button')
 
 		# select the cell to click through to the next coffee-data page
-		time.sleep(2) # this next line errors out sometimes, maybe it needs more of a time buffer
+		time.sleep(4) # this next line errors out sometimes, maybe it needs more of a time buffer
 		sample_num=driver.find_elements(By.XPATH, '//td')[i].text
 		test_page=driver.find_elements(By.XPATH, '//td')[i].click()
 		time.sleep(2)
